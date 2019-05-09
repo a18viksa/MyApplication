@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Webug Burgers</string>
+    <string name="action_settings">About</string>
+    <string name="action_refresh">Refresh</string>
 </resources>
