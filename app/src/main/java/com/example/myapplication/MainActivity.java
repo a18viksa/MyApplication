@@ -42,7 +42,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE = "com.example.myapplication.extra.MESSAGE";
+    /* public static final String EXTRA_MESSAGE = "com.example.myapplication.extra.MESSAGE";
+    public static final String EXTRA_MESSAGE1 = "com.example.myapplication.extra.MESSAGE";
+    public static final String EXTRA_MESSAGE2 = "com.example.myapplication.extra.MESSAGE";
+    public static final String EXTRA_MESSAGE3 = "com.example.myapplication.extra.MESSAGE";
+    public static final String EXTRA_MESSAGE4 = "com.example.myapplication.extra.MESSAGE";
+    public static final String EXTRA_MESSAGE5 = "com.example.myapplication.extra.MESSAGE"; */
 
     private ArrayList<Burger> burgerArrayList=new ArrayList<>();
     private ArrayAdapter<Burger> adapter;
@@ -68,7 +73,12 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 //Toast.makeText(getApplicationContext(), adapter.getItem(position).info(), Toast.LENGTH_SHORT).show();
                 String storlek = adapter.getItem(position).getSize();
-                message(view, storlek);
+                String kostnad = adapter.getItem(position).getCost();
+                String lokation = adapter.getItem(position).getLocation();
+                String kategori = adapter.getItem(position).getCategory();
+                String kompani = adapter.getItem(position).getCompany();
+                String namn = adapter.getItem(position).toString();
+                message(view, storlek, kostnad, lokation, kategori, kompani, namn);
 
 
             }
@@ -222,11 +232,28 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void message(View view, String storlek){
-        Intent intent = new Intent(getApplicationContext(), Burger.class);
-        intent.putExtra(EXTRA_MESSAGE, storlek);
+    public void message(View view, String lokation, String storlek, String kostnad, String kategori, String kompani, String namn){
+        Intent intent = new Intent(getApplicationContext(), BurgerActivity.class);
 
+        Bundle extras = new Bundle();
+        extras.putString("name", namn);
+        extras.putString("company", kompani);
+        extras.putString("location", lokation);
+        extras.putString("category", kategori);
+        extras.putString("size", storlek);
+        extras.putString("cost", kostnad);
+        intent.putExtras(extras);
         startActivity(intent);
+
+        //intent.putExtra(EXTRA_MESSAGE, storlek);
+        //intent.putExtra(EXTRA_MESSAGE1, kostnad);
+        //intent.putExtra(EXTRA_MESSAGE2, lokation);
+        //intent.putExtra(EXTRA_MESSAGE3, kategori);
+        //intent.putExtra(EXTRA_MESSAGE4, kompani);
+        //intent.putExtra(EXTRA_MESSAGE5, namn);
+        Log.d("jacke1","kategori:" + kategori + "\tnamn:" + namn);
+
+        //startActivity(intent);
     }
 }
 

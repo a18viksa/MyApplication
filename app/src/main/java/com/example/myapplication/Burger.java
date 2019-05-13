@@ -48,6 +48,32 @@ public class Burger {
 
     }
 
+
+
+    public void setCompany(String newCompany) {
+        company = newCompany;
+    }
+    public String getCompany(){
+        String newCompany=company;
+        return newCompany;
+    }
+
+    public void setLocation(String newLocation) {
+        location = newLocation;
+    }
+    public String getLocation(){
+        String newLocation=location;
+        return newLocation;
+    }
+
+    public void setCategory(String newCategory) {
+        category = newCategory;
+    }
+    public String getCategory(){
+        String newCategory=category;
+        return newCategory;
+    }
+
     public void setSize(int newSize) {
         size = newSize;
     }
@@ -55,5 +81,15 @@ public class Burger {
         String newSize=""+size;
         return newSize;
     }
+
+    public void setCost(int newCost) {
+        cost = newCost;
+    }
+    public String getCost(){
+        String newCost=""+cost;
+        return newCost;
+    }
+
+
 
 }
