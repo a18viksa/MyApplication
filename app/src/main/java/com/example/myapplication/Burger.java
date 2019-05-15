@@ -12,14 +12,16 @@ public class Burger {
     private String category;
     private int size;
     private int cost;
+    private String auxdata;
 
-    public Burger(String inName, String inCompany, String inLocation, String inCategory, int inSize, int inCost) {
+    public Burger(String inName, String inCompany, String inLocation, String inCategory, int inSize, int inCost, String inAux) {
         name = inName;
         company = inCompany;
         location = inLocation;
         category = inCategory;
         size = inSize;
         cost = inCost;
+        auxdata=inAux;
 
     }
 
@@ -30,6 +32,7 @@ public class Burger {
         category = "";
         size = -1;
         cost = -1;
+        auxdata = "";
     }
 
     @Override
@@ -39,11 +42,6 @@ public class Burger {
 
     public String info() {
         String str = name;
-        str+=" is located in ";
-        str+=location;
-        str+=" and has a height of ";
-        str+=Integer.toString(size);
-        str+="m.";
         return str;
 
     }
@@ -88,6 +86,14 @@ public class Burger {
     public String getCost(){
         String newCost=""+cost;
         return newCost;
+    }
+
+    public void setAux(int newAux) {
+        cost = newAux;
+    }
+    public String getAux(){
+        String newAux=""+auxdata;
+        return newAux;
     }
 
 

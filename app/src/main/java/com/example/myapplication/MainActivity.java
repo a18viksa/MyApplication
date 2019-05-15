@@ -3,6 +3,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.location.Location;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -59,10 +60,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-
-
-
         adapter=new ArrayAdapter<Burger>(this,R.layout.list_item_textview,R.id.list_item_textview);
         ListView myListView = (ListView) findViewById(R.id.list_item_textview);
         myListView.setAdapter(adapter);
@@ -78,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 String kategori = adapter.getItem(position).getCategory();
                 String kompani = adapter.getItem(position).getCompany();
                 String namn = adapter.getItem(position).toString();
-                message(view, storlek, kostnad, lokation, kategori, kompani, namn);
+                String aux = adapter.getItem(position).getAux();
+                message(view, storlek, kostnad, lokation, kategori, kompani, namn, aux);
 
 
             }
@@ -213,9 +211,21 @@ public class MainActivity extends AppCompatActivity {
                     String burgerCategory = burgers.getString("category");
                     int burgerSize = burgers.getInt("size");
                     int burgerCost = burgers.getInt("cost");
+                    String burgerAux = burgers.getString("auxdata");
+
+                    JSONObject aux = new JSONObject(burgerAux);
+
+                    int cals=aux.getInt("Calories");
+                    int fats=aux.getInt("Fat");
+                    int prots=aux.getInt("Protein");
+                    int carbs=aux.getInt("Carbohydrates");
+                    int fibs=aux.getInt("Fibers");
+                    int salts=aux.getInt("Salt");
+
+                    Log.d("hejå", ""+fats);
 
                     Log.d("mupp",burgerName);
-                    adapter.add(new Burger(burgerName, burgerCompany, burgerLocation, burgerCategory, burgerSize, burgerCost));
+                    adapter.add(new Burger(burgerName, burgerCompany, burgerLocation, burgerCategory, burgerSize, burgerCost, burgerAux));
                 }
 
                 Log.d("mupp",a.toString());
@@ -232,16 +242,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void message(View view, String lokation, String storlek, String kostnad, String kategori, String kompani, String namn){
+    public void message(View view, String storlek, String kostnad, String lokation, String kategori, String kompani, String namn, String aux){
         Intent intent = new Intent(getApplicationContext(), BurgerActivity.class);
 
         Bundle extras = new Bundle();
-        extras.putString("name", namn);
-        extras.putString("company", kompani);
-        extras.putString("location", lokation);
-        extras.putString("category", kategori);
         extras.putString("size", storlek);
         extras.putString("cost", kostnad);
+        extras.putString("location", lokation);
+        extras.putString("category", kategori);
+        extras.putString("company", kompani);
+        extras.putString("name", namn);
+        extras.putString("auxdata", aux);
+
+
+
+
+
         intent.putExtras(extras);
         startActivity(intent);
 
@@ -251,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
         //intent.putExtra(EXTRA_MESSAGE3, kategori);
         //intent.putExtra(EXTRA_MESSAGE4, kompani);
         //intent.putExtra(EXTRA_MESSAGE5, namn);
-        Log.d("jacke1","kategori:" + kategori + "\tnamn:" + namn);
+        Log.d("burgare1","kategori:" + kategori + "\tnamn:" + namn);
 
         //startActivity(intent);
     }
