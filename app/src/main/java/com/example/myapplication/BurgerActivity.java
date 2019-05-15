@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
 public class BurgerActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +26,13 @@ public class BurgerActivity extends AppCompatActivity {
         String burgerlokation = extras.getString("location");
         String burgerkompani = extras.getString("company");
         String burgersize = extras.getString("size");
-        String burgercost = extras.getString("company");
+        String burgercost = extras.getString("cost");
         String burgeraux = extras.getString("auxdata");
+        int burgerCals = extras.getInt("cals");
 
 
 
+        Log.e("Calories", String.valueOf(burgerCals));
 
         //String burgerkategori = incomingIntent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
         Log.d("burgare","burgerkategori:" + burgerkategori);

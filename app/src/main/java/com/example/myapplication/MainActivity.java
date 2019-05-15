@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 String kompani = adapter.getItem(position).getCompany();
                 String namn = adapter.getItem(position).toString();
                 String aux = adapter.getItem(position).getAux();
-                message(view, storlek, kostnad, lokation, kategori, kompani, namn, aux);
+                int cals = adapter.getItem(position).getCals();
+                message(view, storlek, kostnad, lokation, kategori, kompani, namn, aux, cals);
 
 
             }
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 // Construct the URL for the Internet service
-                URL url = new URL("http://wwwlab.iit.his.se/a18viksa/XML%20API/burgerjsondata.json");
+                URL url = new URL("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=a18viksa");
 
                 // Create the request to the PHP-service, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -215,8 +216,10 @@ public class MainActivity extends AppCompatActivity {
 
                     JSONObject aux = new JSONObject(burgerAux);
 
-                    int cals=aux.getInt("Calories");
-                    int fats=aux.getInt("Fat");
+                    Log.e("blaaa", aux.getString("Calories"));
+                    int cals = aux.getInt("Calories");
+                   // int cals=aux.getString("Calories");
+                 int fats=aux.getInt("Fat");
                     int prots=aux.getInt("Protein");
                     int carbs=aux.getInt("Carbohydrates");
                     int fibs=aux.getInt("Fibers");
@@ -225,7 +228,9 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("hejå", ""+fats);
 
                     Log.d("mupp",burgerName);
-                    adapter.add(new Burger(burgerName, burgerCompany, burgerLocation, burgerCategory, burgerSize, burgerCost, burgerAux));
+
+
+                    adapter.add(new Burger(burgerName, burgerCompany, burgerLocation, burgerCategory, burgerSize, burgerCost, burgerAux, cals));
                 }
 
                 Log.d("mupp",a.toString());
@@ -242,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void message(View view, String storlek, String kostnad, String lokation, String kategori, String kompani, String namn, String aux){
+    public void message(View view, String storlek, String kostnad, String lokation, String kategori, String kompani, String namn, String aux, int cals){
         Intent intent = new Intent(getApplicationContext(), BurgerActivity.class);
 
         Bundle extras = new Bundle();
@@ -253,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
         extras.putString("company", kompani);
         extras.putString("name", namn);
         extras.putString("auxdata", aux);
+        extras.putInt("cals", cals);
 
 
 

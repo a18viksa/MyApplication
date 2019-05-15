@@ -3,6 +3,9 @@ package com.example.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Burger {
 
 
@@ -13,16 +16,17 @@ public class Burger {
     private int size;
     private int cost;
     private String auxdata;
+    private int cals;
 
-    public Burger(String inName, String inCompany, String inLocation, String inCategory, int inSize, int inCost, String inAux) {
+    public Burger(String inName, String inCompany, String inLocation, String inCategory, int inSize, int inCost, String inAux, int inCals) {
         name = inName;
         company = inCompany;
         location = inLocation;
         category = inCategory;
         size = inSize;
         cost = inCost;
-        auxdata=inAux;
-
+auxdata = inAux;
+cals = inCals;
     }
 
     public Burger(String inName) {
@@ -94,6 +98,10 @@ public class Burger {
     public String getAux(){
         String newAux=""+auxdata;
         return newAux;
+    }
+
+    public int getCals(){
+        return cals;
     }
 
 
