@@ -27,23 +27,24 @@ public class BurgerActivity extends AppCompatActivity {
         String burgerkompani = extras.getString("company");
         String burgersize = extras.getString("size");
         String burgercost = extras.getString("cost");
-        String burgeraux = extras.getString("auxdata");
-        int burgerCals = extras.getInt("cals");
-
+        String burgerCals = String.valueOf(extras.getInt("cals"));
+        String burgerfats = String.valueOf(extras.getInt("fats"));
+        String burgerprots = String.valueOf(extras.getInt("prots"));
+        String burgercarbs = String.valueOf(extras.getInt("carbs"));
+        String burgerfibs = String.valueOf(extras.getInt("fibs"));
+        String burgersalts = String.valueOf(extras.getInt("salts"));
 
 
         Log.e("Calories", String.valueOf(burgerCals));
 
-        //String burgerkategori = incomingIntent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
+
         Log.d("burgare","burgerkategori:" + burgerkategori);
-        //String burgernamn = incomingIntent.getStringExtra(MainActivity. EXTRA_MESSAGE4);
 
         Log.d("burgare","burgernamn:" + burgernamn);
         Log.d("burgare","burgerkategori:" + burgerkategori);
 
 
-        TextView Bname =findViewById(R.id.NamntextView);
-        Bname.setText("Name: "+burgernamn);
+
 
         TextView Bkat =findViewById(R.id.Kategoriview);
         Bkat.setText("Category: "+burgerkategori);
@@ -55,12 +56,27 @@ public class BurgerActivity extends AppCompatActivity {
         Blok.setText("Location: "+burgerlokation);
 
         TextView Bsiz =findViewById(R.id.sizeView);
-        Bsiz.setText("Size: "+burgersize);
+        Bsiz.setText("Size: "+burgersize + " grams");
 
         TextView Bcos =findViewById(R.id.costView);
-        Bcos.setText("Cost: "+burgercost);
+        Bcos.setText("Cost: "+burgercost + " kr");
 
-        TextView Baux =findViewById(R.id.auxView);
-        Baux.setText(burgeraux);
+        TextView Bcals =findViewById(R.id.calsView);
+        Bcals.setText(burgerCals+ " calories");
+
+        TextView Bfats =findViewById(R.id.fatsView);
+        Bfats.setText(burgerfats+ " g fat");
+
+        TextView Bprots =findViewById(R.id.protsView);
+        Bprots.setText(burgerprots+ " g proteins");
+
+        TextView Bcarbs =findViewById(R.id.carbsView);
+        Bcarbs.setText(burgercarbs+ " g carbs");
+
+        TextView Bfibs =findViewById(R.id.fibsView);
+        Bfibs.setText(burgerfibs+ " g fibres");
+
+        TextView Bsalts =findViewById(R.id.saltsView);
+        Bsalts.setText(burgersalts+ " g salt");
     }
 }

@@ -1,11 +1,5 @@
 package com.example.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class Burger {
 
 
@@ -15,28 +9,45 @@ public class Burger {
     private String category;
     private int size;
     private int cost;
-    private String auxdata;
     private int cals;
+    private int fats;
+    private int carbs;
+    private int prots;
+    private float fibs;
+    private float salts;
 
-    public Burger(String inName, String inCompany, String inLocation, String inCategory, int inSize, int inCost, String inAux, int inCals) {
+
+    public Burger(String inName, String inCompany, String inLocation, String inCategory, int inSize, int inCost, int inCals, int inFats, int inCarbs, int inProts, float inFibs, float inSalts) {
         name = inName;
         company = inCompany;
         location = inLocation;
         category = inCategory;
         size = inSize;
         cost = inCost;
-auxdata = inAux;
-cals = inCals;
+        cals = inCals;
+        fats = inFats;
+        carbs = inCarbs;
+        prots = inProts;
+        fibs = inFibs;
+        salts = inSalts;
     }
 
-    public Burger(String inName) {
+
+
+    public Burger(String burgerName, String burgerCompany, String burgerLocation, String inName, int size, int cost, int cals, int burgerSize, int burgerCost, int burgerCals, float burgerFibs, int burgerFats) {
         name = inName;
         company = "";
         location = "";
         category = "";
-        size = -1;
-        cost = -1;
-        auxdata = "";
+        this.size = -1;
+        this.cost = -1;
+        this.cals = -1;
+        fats = -1;
+        carbs = -1;
+        prots = -1;
+        fibs = -1;
+        salts = -1;
+
     }
 
     @Override
@@ -92,17 +103,49 @@ cals = inCals;
         return newCost;
     }
 
-    public void setAux(int newAux) {
-        cost = newAux;
+    public void setCarbs(int newCarbs) {
+        carbs = newCarbs;
     }
-    public String getAux(){
-        String newAux=""+auxdata;
-        return newAux;
+    public int getCarbs(){
+        return carbs;
     }
 
+    public void setCals(int newCals) {
+        cals = newCals;
+    }
     public int getCals(){
         return cals;
     }
+
+    public void setFats(int newfats) {
+        fats = newfats;
+    }
+    public int getFats(){
+        return fats;
+    }
+
+    public void setProts(int newProts) {
+        prots = newProts;
+    }
+    public int getProts(){
+        return prots;
+    }
+
+    public void setFibs(float newFibs) {
+        fibs = newFibs;
+    }
+    public float getFibs(){
+        return fibs;
+    }
+
+    public void setSalts(int newSalts) {
+        salts = newSalts;
+    }
+    public float getSalts(){
+        return salts;
+    }
+
+
 
 
 
