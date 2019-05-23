@@ -49,8 +49,8 @@ public class BurgerActivity extends AppCompatActivity {
         TextView Bkat =findViewById(R.id.Kategoriview);
         Bkat.setText("Category: "+burgerkategori);
 
-        TextView Bkom =findViewById(R.id.kompaniView);
-        Bkom.setText("Company: "+burgerkompani);
+        TextView Bname =findViewById(R.id.nameView);
+        Bname.setText("Name: "+burgernamn);
 
         TextView Blok =findViewById(R.id.locationView);
         Blok.setText("Location: "+burgerlokation);

@@ -68,7 +68,7 @@
                     android:orientation="vertical" >
 
                     <TextView
-                        android:id="@+id/kompaniView"
+                        android:id="@+id/nameView"
                         android:layout_width="395dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
